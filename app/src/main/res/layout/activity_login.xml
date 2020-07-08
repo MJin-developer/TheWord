@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#5CB7EF"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/text_login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현명언"
+        android:fontFamily="@font/font"
+        android:layout_above="@id/img_cloud"
+        android:textSize="50sp"
+        android:textColor="#ffffffff"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/img_cloud"
+        android:layout_above="@id/text_announce"
+        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cloud"/>
+
+    <TextView
+        android:id="@+id/text_announce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#ffffffff"
+        android:text="로그인을 하시면 게시글 작성 권한을 얻게 됩니다."
+        android:layout_marginBottom="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/kakao_login_btn"/>
+    
+    <com.kakao.usermgmt.LoginButton
+        android:id="@+id/kakao_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_no_login"/>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_no_login"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/btn_selector"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_login_icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="25dp"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:background="#ff000000"
+            android:layout_marginLeft="24dp"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="로그인 없이 진행하기"
+            android:fontFamily="@font/font"
+            android:textSize="22sp"
+            android:textColor="#ff000000"
+            android:layout_marginLeft="50dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
