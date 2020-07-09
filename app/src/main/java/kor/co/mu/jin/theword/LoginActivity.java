@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Session.getCurrentSession().addCallback(sessionCallback);
+        LoginCheck();
+
     }
 
     private ISessionCallback sessionCallback = new ISessionCallback() {
@@ -66,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
-            Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "로그인 실패, 다시 시도해 주세요.", Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -112,11 +114,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    void LoginCheck(){
+        UserManagement.getInstance().me(new MeV2ResponseCallback() {
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+                return;
+            }
+
+            @Override
+            public void onSuccess(MeV2Response result) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        // 카카오톡|스토리 간편로그인 실행 결과를 받아서 SDK로 전달
         if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
             return;
         }

@@ -36,6 +36,17 @@
         android:text="로그인을 하시면 게시글 작성 권한을 얻게 됩니다."
         android:layout_marginBottom="8dp"
         android:layout_centerHorizontal="true"
+        android:layout_above="@id/text_announce2"/>
+
+    <TextView
+        android:id="@+id/text_announce2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#ffffffff"
+        android:text="이미 로그인을 하셨다면 잠시만 기다려 주십시오."
+        android:layout_marginBottom="8dp"
+        android:layout_centerHorizontal="true"
         android:layout_above="@id/kakao_login_btn"/>
     
     <com.kakao.usermgmt.LoginButton

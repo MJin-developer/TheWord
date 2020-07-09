@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         open_search ++;
 
         if (open_search%2 == 0) {
+            editText.setText("");
             editText.setVisibility(View.VISIBLE);
             editText.requestFocus();
 
@@ -61,10 +63,15 @@ public class MainActivity extends AppCompatActivity {
         }else {
             editText.setVisibility(View.GONE);
 
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
         }
 
-        if(open_search > 10) open_search = 1;
+        if(open_search > 2) open_search = 1;
+    }
+
+    public void clickSetting(View view) {
+        Intent intentSetting = new Intent(MainActivity.this, SettingActivity.class);
+        startActivity(intentSetting);
     }
 }

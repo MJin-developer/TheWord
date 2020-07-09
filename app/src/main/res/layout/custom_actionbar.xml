@@ -26,7 +26,8 @@
             android:src="@drawable/flow_selector"
             android:layout_centerVertical="true"
             android:clickable="true"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:onClick="clickSetting"/>
 
         <ImageView
             android:id="@+id/menu_search"
