@@ -47,6 +47,7 @@ public class Intro extends AppCompatActivity {
             Intent intent = new Intent(Intro.this, LoginActivity.class);
             startActivity(intent);
             finish();
+            overridePendingTransition(R.anim.fadein2, R.anim.fadeout);
         }
     };
 
