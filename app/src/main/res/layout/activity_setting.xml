@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#E3EFEE"
     android:layout_height="match_parent"
     tools:context=".SettingActivity">
 
@@ -67,6 +68,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/text_profile_set"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="프로필 수정"

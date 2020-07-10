@@ -1,12 +1,15 @@
 package kor.co.mu.jin.theword;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +33,7 @@ public class SettingActivity extends AppCompatActivity {
     CircleImageView img_setting;
     TextView nickname_setting;
     TextView log_setting;
+    TextView text_profile_set;
     LinearLayout linearLayout;
 
     Button noti_setting;
@@ -44,6 +48,7 @@ public class SettingActivity extends AppCompatActivity {
         nickname_setting = findViewById(R.id.nickname_setting);
         log_setting = findViewById(R.id.log_setting);
         linearLayout = findViewById(R.id.linear1);
+        text_profile_set = findViewById(R.id.text_profile_set);
 
         CustomActionBar();
         requestUserInfo();
@@ -87,20 +92,30 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
                 log_setting.setText("로그인");
+
+                nickname_setting.setText("");
+                Glide.with(SettingActivity.this).load(R.drawable.no_image).into(img_setting);
+
+                linearLayout.setEnabled(false);
+                text_profile_set.setText("로그인 필요");
+                text_profile_set.setTextColor(0xffcfcfcf);
             }
 
             @Override
             public void onSuccess(MeV2Response result) {
                 log_setting.setText("로그 아웃");
-                UserAccount userAccount = result.getKakaoAccount();
 
-                Profile profile = userAccount.getProfile();
+                SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
 
-                String nickname = profile.getNickname();
-                String imgUrl = profile.getProfileImageUrl();
+                String nickname = sharedPreferences.getString("NickName", null);
+                String imgUrl = sharedPreferences.getString("ImgUrl", null);
+
+                Log.i("URL", imgUrl+"");
 
                 nickname_setting.setText(nickname);
                 Glide.with(SettingActivity.this).load(imgUrl).into(img_setting);
+
+                linearLayout.setEnabled(true);
             }
         });
     }
@@ -133,6 +148,17 @@ public class SettingActivity extends AppCompatActivity {
 
     public void clickSetProfile(View view) {
         Intent intent = new Intent(SettingActivity.this, SetProfileActivity.class);
-        startActivityForResult(intent, 10);
+        startActivityForResult(intent, 0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 0 && resultCode == RESULT_OK){
+            Intent intent = new Intent(SettingActivity.this, SettingActivity.class);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.fadein2, R.anim.fadeout);
+        }
     }
 }

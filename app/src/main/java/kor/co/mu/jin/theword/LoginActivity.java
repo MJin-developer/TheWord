@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -32,12 +36,14 @@ public class LoginActivity extends AppCompatActivity {
     TextView pnickname;
     TextView pmessage;
 
+    String Nickname;
+    String ImgUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         Session.getCurrentSession().addCallback(sessionCallback);
         LoginCheck();
@@ -53,17 +59,24 @@ public class LoginActivity extends AppCompatActivity {
             pimg = view.findViewById(R.id.login_img);
             pnickname = view.findViewById(R.id.login_nickname);
             pmessage = view.findViewById(R.id.login_message);
-            requestUserInfo();
-            new AlertDialog.Builder(LoginActivity.this).setView(view).setPositiveButton("확인", new DialogInterface.OnClickListener() {
 
+            requestUserInfo();
+
+            new AlertDialog.Builder(LoginActivity.this).setView(view).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("ImgUrl", ImgUrl);
+                    editor.putString("NickName", Nickname);
+                    editor.commit();
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("Login Key", 10);
                     startActivity(intent);
                     finish();
                 }
-            }).setNegativeButton("취소", null).create().show();
+
+            }).create().show();
         }
 
         @Override
@@ -105,15 +118,16 @@ public class LoginActivity extends AppCompatActivity {
                 Profile profile = userAccount.getProfile();
                 if(profile == null) return;
 
-                String nickname = profile.getNickname();
-                String imgUrl = profile.getProfileImageUrl();
+                Nickname = profile.getNickname();
+                ImgUrl = profile.getProfileImageUrl();
 
-                pnickname.setText(nickname);
-                pmessage.setText("' " + nickname + " ' " + "님 으로 진행하시겠습니까 ?");
-                Glide.with(LoginActivity.this).load(imgUrl).into(pimg);
+                pnickname.setText(Nickname);
+                pmessage.setText("' " + Nickname + " ' " + "님 으로 진행하시겠습니까 ?");
+                Glide.with(LoginActivity.this).load(ImgUrl).into(pimg);
             }
         });
     }
+
     void LoginCheck(){
         UserManagement.getInstance().me(new MeV2ResponseCallback() {
             @Override
