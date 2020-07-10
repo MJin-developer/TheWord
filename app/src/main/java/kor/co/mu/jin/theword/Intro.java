@@ -14,6 +14,7 @@ import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class Intro extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
@@ -47,6 +49,7 @@ public class Intro extends AppCompatActivity {
             Intent intent = new Intent(Intro.this, LoginActivity.class);
             startActivity(intent);
             finish();
+            overridePendingTransition(R.anim.fadein2, R.anim.fadeout);
         }
     };
 

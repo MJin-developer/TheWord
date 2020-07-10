@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kor.co.mu.jin.theword">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SetProfileActivity"></activity>
+        <activity android:name=".SettingActivity" />
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".Intro">
             <intent-filter>
@@ -20,12 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="f800b26613de776e0968d54d616eb0c4"/>
-
+            android:value="f800b26613de776e0968d54d616eb0c4" />
     </application>
 
 </manifest>

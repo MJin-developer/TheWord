@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "605832090999",
+    "firebase_url": "https://theworddb.firebaseio.com",
+    "project_id": "theworddb",
+    "storage_bucket": "theworddb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605832090999:android:8c6acbdf0d0c8d58623d72",
+        "android_client_info": {
+          "package_name": "kor.co.mu.jin.theword"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605832090999-oqg3f9369g2gormhd1qqfu3a4v2vui91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsMPbKFSOAkP4oU2Kx2cBPwZv5Z01Lamg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605832090999-oqg3f9369g2gormhd1qqfu3a4v2vui91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#49B7E3"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/menu_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:src="@drawable/favorite_selector"/>
+
+        <ImageView
+            android:id="@+id/menu_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/flow_selector"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:onClick="clickSetting"/>
+
+        <ImageView
+            android:id="@+id/menu_search"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search_selector"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/menu_flow"
+            android:onClick="clickSearch"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffffffff"
+            android:text="현 명 언"
+            android:layout_centerVertical="true"
+            android:textSize="23sp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:inputType="text"
+            android:layout_marginRight="4dp"
+            android:background="#ffffffff"
+            android:layout_toRightOf="@id/menu_favorite"
+            android:layout_toLeftOf="@id/menu_search"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
