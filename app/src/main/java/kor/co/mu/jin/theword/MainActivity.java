@@ -2,6 +2,7 @@ package kor.co.mu.jin.theword;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView menu_favorite;
     ImageView menu_search;
     ImageView menu_flow;
+    ImageView close_boardlist;
 
     int open_search = 1;
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         View CustomActionbar = LayoutInflater.from(this).inflate(R.layout.custom_actionbar, null);
         editText = CustomActionbar.findViewById(R.id.search);
-        menu_favorite = CustomActionbar.findViewById(R.id.menu_favorite);
+        menu_favorite = CustomActionbar.findViewById(R.id.menu_boardlist);
         menu_search = CustomActionbar.findViewById(R.id.menu_search);
         menu_flow = CustomActionbar.findViewById(R.id.menu_flow);
 
@@ -82,5 +84,22 @@ public class MainActivity extends AppCompatActivity {
     public void clickSetting(View view) {
         Intent intentSetting = new Intent(MainActivity.this, SettingActivity.class);
         startActivity(intentSetting);
+    }
+
+    public void clickBoardList(View view) {
+        View customview = LayoutInflater.from(this).inflate(R.layout.boardlist, null);
+        close_boardlist = customview.findViewById(R.id.close_boardlist);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(customview);
+        final AlertDialog boardliist = builder.create();
+        boardliist.setCancelable(false);
+        boardliist.show();
+
+        close_boardlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boardliist.dismiss();
+            }
+        });
     }
 }

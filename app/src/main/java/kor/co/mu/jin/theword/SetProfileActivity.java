@@ -52,6 +52,8 @@ public class SetProfileActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(textInputEditText.getText().length() <= 1) textInputEditText.setError("닉네임이 너무 짧습니다.");
+
                 nickname_profile_setting.setText(s);
                 s = textInputEditText.getText().toString();
             }
