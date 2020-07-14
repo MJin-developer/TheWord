@@ -1,12 +1,16 @@
 package kor.co.mu.jin.theword;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,9 +49,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            if(checkSelfPermission(permissions[0]) == PackageManager.PERMISSION_DENIED){
+                requestPermissions(permissions, 100);
+            }
+        }
+
         Session.getCurrentSession().addCallback(sessionCallback);
         LoginCheck();
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 100 && grantResults[0] == PackageManager.PERMISSION_DENIED){
+            Toast.makeText(this, "권한 거부됨, 일부 기능 사용 불가능", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private ISessionCallback sessionCallback = new ISessionCallback() {

@@ -12,12 +12,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/menu_favorite"
+            android:id="@+id/menu_boardlist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:clickable="true"
-            android:src="@drawable/favorite_selector"/>
+            android:src="@drawable/board_list_selector"
+            android:onClick="clickBoardList"/>
 
         <ImageView
             android:id="@+id/menu_flow"
@@ -59,7 +60,7 @@
             android:inputType="text"
             android:layout_marginRight="4dp"
             android:background="#ffffffff"
-            android:layout_toRightOf="@id/menu_favorite"
+            android:layout_toRightOf="@id/menu_boardlist"
             android:layout_toLeftOf="@id/menu_search"/>
 
     </RelativeLayout>
