@@ -36,6 +36,8 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:clickable="true"
+            android:onClick="clickFamousPeople"
             android:padding="8dp"
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -62,6 +64,8 @@
             android:background="#afafaf"/>
 
         <LinearLayout
+            android:clickable="true"
+            android:onClick="clickPopularstroy"
             android:padding="8dp"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -95,6 +99,8 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:clickable="true"
+            android:onClick="clickGood"
             android:padding="8dp"
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -121,6 +127,8 @@
             android:background="#afafaf"/>
 
         <LinearLayout
+            android:clickable="true"
+            android:onClick="clickFunny"
             android:padding="8dp"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -149,6 +157,8 @@
         android:background="#afafaf"/>
 
     <LinearLayout
+        android:clickable="true"
+        android:onClick="clickMystory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"

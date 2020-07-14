@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.google.firebase:firebase-database:19.3.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
 }

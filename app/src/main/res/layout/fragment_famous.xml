@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#EBF0F1"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".FragmentFamous">
+
+    <TextView
+        android:id="@+id/title_famous"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg"
+        android:text="유명인 스토리"
+        android:layout_margin="4dp"
+        android:padding="6dp"
+        android:textColor="#ff000000"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:textSize="24sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/title_famous"
+        android:layout_marginTop="8dp"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

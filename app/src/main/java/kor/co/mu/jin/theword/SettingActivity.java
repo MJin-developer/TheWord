@@ -161,4 +161,9 @@ public class SettingActivity extends AppCompatActivity {
             overridePendingTransition(R.anim.fadein2, R.anim.fadeout);
         }
     }
+
+    public void clickdeveloper(View view) {
+        Intent intent = new Intent(this, DeveloperActivity.class);
+        startActivity(intent);
+    }
 }
