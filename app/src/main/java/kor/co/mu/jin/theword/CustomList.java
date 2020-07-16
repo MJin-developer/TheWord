@@ -10,6 +10,9 @@ public class CustomList {
         this.title = title;
     }
 
+    public CustomList() {
+    }
+
     public String getImgUrl() {
         return imgUrl;
     }

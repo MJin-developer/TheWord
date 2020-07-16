@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".FamousItemClickActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="괜찮아 자빠질수도 있지 뭘"
+                android:fontFamily="@font/font"
+                android:textColor="#ff000000"/>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#ffefefef"
+                android:layout_below="@id/item_title"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <fragment
+                android:layout_below="@id/view1"
+                android:id="@+id/youtubeFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.google.android.youtube.player.YouTubePlayerFragment"/>
+
+            <TextView
+                android:id="@+id/item_content"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:textSize="20sp"
+                android:text="자빠지면 일어나면됨dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+                android:fontFamily="@font/font"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/youtubeFragment"
+                android:textColor="#ff000000"/>
+
+            <LinearLayout
+                android:id="@+id/l1"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/item_content"
+                android:layout_width="match_parent"
+                android:weightSum="2"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="#C6C6ED"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/favorite"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffffff"
+                        android:fontFamily="@font/font"
+                        android:layout_gravity="center_vertical"
+                        android:text="좋아요"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffffff"
+                        android:fontFamily="@font/font"
+                        android:layout_marginLeft="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="46"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:padding="16dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="#C6C6ED"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/write"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffffff"
+                        android:fontFamily="@font/font"
+                        android:layout_gravity="center_vertical"
+                        android:text="댓글"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffffff"
+                        android:fontFamily="@font/font"
+                        android:layout_marginLeft="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="156"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/r1"
+                android:layout_below="@id/l1"
+                android:layout_marginTop="16dp"
+                android:background="#C6C6ED"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="댓글"
+                    android:textSize="18sp"
+                    android:textColor="#ffffffff"
+                    android:fontFamily="@font/font"/>
+
+                <EditText
+                    android:id="@+id/et1"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv2"
+                    android:layout_toLeftOf="@id/tv3"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#ffffff"
+                    android:background="#ff0000"
+                    android:inputType="textMultiLine"/>
+
+                <TextView
+                    android:padding="8dp"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/tv3"
+                    android:background="#efefef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/font"
+                    android:textColor="#ff000000"
+                    android:text="등록"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font"
+                android:text="등록된 댓글 목록"
+                android:textSize="16sp"
+                android:textColor="#ff000000"
+                android:layout_below="@id/r1"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/tv4"
+                android:layout_marginTop="8dp"
+                android:id="@+id/sub_word"
+                android:background="@drawable/btn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

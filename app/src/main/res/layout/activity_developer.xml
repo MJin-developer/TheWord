@@ -24,11 +24,20 @@
         android:src="@drawable/no_image"/>
 
     <Button
+        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="확인"
         android:layout_below="@id/input_img"
         android:layout_centerHorizontal="true"
         android:onClick="confirm"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="확인2"
+        android:layout_below="@id/btn1"
+        android:layout_centerHorizontal="true"
+        android:onClick="confirm2"/>
 
 </RelativeLayout>

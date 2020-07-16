@@ -37,10 +37,6 @@ public class Intro extends AppCompatActivity {
         Animation animationIn = AnimationUtils.loadAnimation(this, R.anim.fadein);
         text_intro_word = findViewById(R.id.text_intro_word);
         text_intro_word.startAnimation(animationIn);
-
-        getKeyHash getKeyHash = new getKeyHash();
-        String Hash = getKeyHash.KeyHash(this);
-        Log.i("KEY HASH", Hash);
     }
 
     Handler handler = new Handler(){

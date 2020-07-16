@@ -1,6 +1,7 @@
 package kor.co.mu.jin.theword;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,11 +48,8 @@ public class FragmentPopular extends Fragment {
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
 
         return v;
