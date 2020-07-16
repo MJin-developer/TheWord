@@ -18,12 +18,18 @@ public class FamousItemClickActivity extends AppCompatActivity {
 
     YouTubePlayerFragment youTubePlayerFragment;
     TextView TITLE;
+    TextView CONTENT;
+    TextView favoriteNum;
+    TextView subwordNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_famous_item_click);
         TITLE = findViewById(R.id.item_title);
+        CONTENT = findViewById(R.id.item_content);
+        favoriteNum = findViewById(R.id.item_favoriteNum);
+        subwordNum = findViewById(R.id.item_subwordNum);
 
         Intent intent = getIntent();
         String title = intent.getStringExtra("TITLE");

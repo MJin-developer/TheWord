@@ -84,6 +84,7 @@
                         android:text="좋아요"/>
 
                     <TextView
+                        android:id="@+id/item_favoriteNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#ffffffff"
@@ -123,6 +124,7 @@
                         android:text="댓글"/>
 
                     <TextView
+                        android:id="@+id/item_subwordNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#ffffffff"

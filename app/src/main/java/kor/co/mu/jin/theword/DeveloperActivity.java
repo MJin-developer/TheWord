@@ -33,6 +33,10 @@ public class DeveloperActivity extends AppCompatActivity {
     ImageView iv;
     EditText editText;
     String FILENAME;
+    EditText youtubeID;
+    EditText favoriteNum;
+    EditText subwordNum;
+    EditText content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,10 @@ public class DeveloperActivity extends AppCompatActivity {
         setContentView(R.layout.activity_developer);
         iv = findViewById(R.id.input_img);
         editText = findViewById(R.id.input_title);
+        youtubeID = findViewById(R.id.input_youtubeID);
+        favoriteNum = findViewById(R.id.input_favoriteNum);
+        subwordNum = findViewById(R.id.input_subwordNum);
+        content = findViewById(R.id.input_content);
     }
 
     public void clickchangeimg(View view) {
@@ -80,7 +88,7 @@ public class DeveloperActivity extends AppCompatActivity {
     public void confirm2(View view) {
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference rootRef = firebaseStorage.getReference();
-        StorageReference imgRef = rootRef.child("uploads/" + FILENAME);
+        final StorageReference imgRef = rootRef.child("uploads/" + FILENAME);
         imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<android.net.Uri>() {
             @Override
             public void onSuccess(android.net.Uri uri) {
@@ -89,9 +97,16 @@ public class DeveloperActivity extends AppCompatActivity {
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference ref = firebaseDatabase.getReference();
                 DatabaseReference imgref = ref.child("FAMOUS");
+                DatabaseReference itemdataref = imgref.child("ITEMDATA");
 
                 CustomList customList = new CustomList(uri.toString(), editText.getText().toString());
-                imgref.push().setValue(customList);
+                String f = favoriteNum.getText().toString();
+                int fn = Integer.parseInt(f);
+                String s = subwordNum.getText().toString();
+                int sn = Integer.parseInt(s);
+                ItemdataList itemdataList = new ItemdataList(uri.toString(), editText.getText().toString(), fn, sn, youtubeID.getText().toString(), content.getText().toString());
+
+                imgref.push().setValue(itemdataList);
             }
         });
     }

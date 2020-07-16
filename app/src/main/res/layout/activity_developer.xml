@@ -14,6 +14,38 @@
         android:inputType="textMultiLine"
         android:layout_height="wrap_content"/>
 
+    <EditText
+        android:layout_below="@id/btn2"
+        android:id="@+id/input_youtubeID"
+        android:layout_width="match_parent"
+        android:hint="유튜브 영상 ID"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@id/input_youtubeID"
+        android:id="@+id/input_favoriteNum"
+        android:layout_width="match_parent"
+        android:hint="좋아요 개수"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@id/input_favoriteNum"
+        android:id="@+id/input_subwordNum"
+        android:layout_width="match_parent"
+        android:hint="댓글 개수"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@id/input_subwordNum"
+        android:id="@+id/input_content"
+        android:layout_width="match_parent"
+        android:hint="내용 입력"
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"/>
+
     <ImageView
         android:clickable="true"
         android:onClick="clickchangeimg"
@@ -33,6 +65,7 @@
         android:onClick="confirm"/>
 
     <Button
+        android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="확인2"
