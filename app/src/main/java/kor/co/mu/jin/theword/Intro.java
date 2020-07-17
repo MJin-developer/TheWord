@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 public class Intro extends AppCompatActivity {
 
     TextView text_intro_word;
+    IntrowordList introwordList = new IntrowordList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class Intro extends AppCompatActivity {
 
         Animation animationIn = AnimationUtils.loadAnimation(this, R.anim.fadein);
         text_intro_word = findViewById(R.id.text_intro_word);
+        text_intro_word.setText(introwordList.returnWord());
         text_intro_word.startAnimation(animationIn);
     }
 

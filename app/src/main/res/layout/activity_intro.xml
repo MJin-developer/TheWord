@@ -13,9 +13,9 @@
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="현명언"
+        android:text="Daily Letter"
         android:fontFamily="@font/font"
-        android:textSize="80sp"
+        android:textSize="70sp"
         android:textColor="#FFFFFF"
         android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"/>
@@ -40,16 +40,5 @@
         android:text="발없는 말이 천리를 간다"
         android:layout_below="@id/img_title"
         android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="제작 총괄\nMJin"
-        android:textSize="13sp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="#ff000000"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
