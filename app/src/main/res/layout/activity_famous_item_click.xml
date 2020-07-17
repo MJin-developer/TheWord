@@ -61,8 +61,11 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/btn_up_favorite"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="clickUpFavorite"
                     android:padding="16dp"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -167,10 +170,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#ffffff"
+                    android:maxLines="50"
                     android:background="#ff0000"
                     android:inputType="textMultiLine"/>
 
                 <TextView
+                    android:clickable="true"
+                    android:onClick="WriteSubword"
                     android:padding="8dp"
                     android:layout_alignParentRight="true"
                     android:id="@+id/tv3"
@@ -199,7 +205,9 @@
                 android:layout_below="@id/tv4"
                 android:layout_marginTop="8dp"
                 android:id="@+id/sub_word"
-                android:background="@drawable/btn"
+                android:background="@drawable/subword"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
             </androidx.recyclerview.widget.RecyclerView>

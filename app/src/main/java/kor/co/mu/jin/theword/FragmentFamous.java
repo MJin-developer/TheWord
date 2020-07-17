@@ -29,7 +29,6 @@ import java.util.List;
 public class FragmentFamous extends Fragment {
 
     ArrayList<CustomList> customLists = new ArrayList<>();
-
     RecyclerAdapter adapter;
     RecyclerView recyclerView;
 
