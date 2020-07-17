@@ -162,6 +162,7 @@
 
                 <EditText
                     android:id="@+id/et1"
+                    android:clickable="true"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/tv2"
                     android:layout_toLeftOf="@id/tv3"

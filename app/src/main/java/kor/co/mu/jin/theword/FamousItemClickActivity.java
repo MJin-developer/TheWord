@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
@@ -28,6 +29,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.MeV2ResponseCallback;
+import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.usermgmt.response.model.Profile;
+import com.kakao.usermgmt.response.model.UserAccount;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +53,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
     TextView CONTENT;
     TextView favoriteNum;
     TextView subwordNum;
+    TextView writesubword;
     LinearLayout btn_up_favorite;
     ImageView favorite;
     EditText subword;
@@ -62,6 +70,9 @@ public class FamousItemClickActivity extends AppCompatActivity {
         btn_up_favorite = findViewById(R.id.btn_up_favorite);
         favorite = findViewById(R.id.iv1);
         subword = findViewById(R.id.et1);
+        writesubword = findViewById(R.id.tv3);
+
+        requestUserInfo();
 
         recyclerView = findViewById(R.id.sub_word);
         adapter = new subwordAdapter(subwordLists, this);
@@ -187,6 +198,23 @@ public class FamousItemClickActivity extends AppCompatActivity {
 
     }
 
+    void requestUserInfo() {
+        UserManagement.getInstance().me(new MeV2ResponseCallback() {
+            @Override
+            public void onSessionClosed(ErrorResult errorResult) {
+                Toast.makeText(FamousItemClickActivity.this, "로그인이 되어있지 않습니다.\n댓글 작성 기능이 제한됩니다.", Toast.LENGTH_SHORT).show();
+                subword.setEnabled(false);
+                writesubword.setClickable(false);
+            }
+
+            @Override
+            public void onSuccess(MeV2Response result) {
+                subword.setEnabled(true);
+                writesubword.setClickable(true);
+            }
+        });
+    }
+
     public void WriteSubword(View view) {
 
         if(subword.length() <= 0 ){
@@ -232,5 +260,4 @@ public class FamousItemClickActivity extends AppCompatActivity {
         }
 
     }
-
 }
