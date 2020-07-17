@@ -7,11 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,16 +22,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DeveloperActivity extends AppCompatActivity {
 
-    String Uri;
+    Uri Uri;
     ImageView iv;
     EditText editText;
-    String title;
+    String FILENAME;
+    EditText youtubeID;
+    EditText favoriteNum;
+    EditText subwordNum;
+    EditText content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +44,10 @@ public class DeveloperActivity extends AppCompatActivity {
         setContentView(R.layout.activity_developer);
         iv = findViewById(R.id.input_img);
         editText = findViewById(R.id.input_title);
+        youtubeID = findViewById(R.id.input_youtubeID);
+        favoriteNum = findViewById(R.id.input_favoriteNum);
+        subwordNum = findViewById(R.id.input_subwordNum);
+        content = findViewById(R.id.input_content);
     }
 
     public void clickchangeimg(View view) {
@@ -51,26 +63,51 @@ public class DeveloperActivity extends AppCompatActivity {
 
         if(requestCode == 300 && resultCode == RESULT_OK){
             Uri ImgUri = data.getData();
-            Uri = ImgUri.toString();
+            Uri = ImgUri;
             Glide.with(this).load(ImgUri).into(iv);
         }
     }
 
     public void confirm(View view) {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference ref = firebaseDatabase.getReference();
-        DatabaseReference titleref = ref.child("Title");
-        titleref.push().setValue(editText.getText().toString());
-
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-        StorageReference rootref = firebaseStorage.getReference();
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
         String filename = sdf.format(new Date()) + ".png";
+        FILENAME = filename;
+        StorageReference imgref = firebaseStorage.getReference("uploads/" + filename);
+        UploadTask task = imgref.putFile(Uri);
 
+        task.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(DeveloperActivity.this, "업로드 성공", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+    }
 
+    public void confirm2(View view) {
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference rootRef = firebaseStorage.getReference();
+        final StorageReference imgRef = rootRef.child("uploads/" + FILENAME);
+        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<android.net.Uri>() {
+            @Override
+            public void onSuccess(android.net.Uri uri) {
+                Toast.makeText(DeveloperActivity.this, "URI 불러오기 성공", Toast.LENGTH_SHORT).show();
 
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference ref = firebaseDatabase.getReference();
+                DatabaseReference imgref = ref.child("FAMOUS");
+                DatabaseReference itemdataref = imgref.child("ITEMDATA");
 
+                CustomList customList = new CustomList(uri.toString(), editText.getText().toString());
+                String f = favoriteNum.getText().toString();
+                int fn = Integer.parseInt(f);
+                String s = subwordNum.getText().toString();
+                int sn = Integer.parseInt(s);
+                ItemdataList itemdataList = new ItemdataList(uri.toString(), editText.getText().toString(), fn, sn, youtubeID.getText().toString(), content.getText().toString());
+
+                imgref.push().setValue(itemdataList);
+            }
+        });
     }
 }

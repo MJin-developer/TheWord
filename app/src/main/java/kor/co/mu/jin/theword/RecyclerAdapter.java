@@ -1,6 +1,8 @@
 package kor.co.mu.jin.theword;
 
 import android.content.Context;
+import android.content.Intent;
+import android.icu.text.Transliterator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter {
             imageView = itemView.findViewById(R.id.item_img);
             textView = itemView.findViewById(R.id.item_text);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CustomList customList = items.get(getLayoutPosition());
+                    Intent intent = new Intent(context, FamousItemClickActivity.class);
+                    intent.putExtra("TITLE", customList.title);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -20,6 +20,8 @@ public class FragmentPager extends FragmentPagerAdapter {
         fragments[5] = new FragmentMyStroy();
     }
 
+
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
