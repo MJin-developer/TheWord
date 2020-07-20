@@ -1,17 +1,9 @@
 package kor.co.mu.jin.theword;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -20,7 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
@@ -33,16 +30,12 @@ import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
-import com.kakao.usermgmt.response.model.Profile;
-import com.kakao.usermgmt.response.model.UserAccount;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FamousItemClickActivity extends AppCompatActivity {
+public class popularItemClickActivity extends AppCompatActivity {
 
     ArrayList<subwordList> subwordLists = new ArrayList<>();
     RecyclerView recyclerView;
@@ -97,7 +90,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootref = firebaseDatabase.getReference();
-        DatabaseReference dataref = rootref.child("A FAMOUS");
+        DatabaseReference dataref = rootref.child("POPULAR");
         dataref.orderByChild("title").equalTo(TITLE.getText().toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -107,6 +100,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
                     favoriteNum.setText(itemdataList.favoriteNumber+"");
                     subwordNum.setText(itemdataList.subwordNumber+"");
                     youTubePlayerFragment.initialize("item", new YouTubePlayer.OnInitializedListener() {
+
                         @Override
                         public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                             youTubePlayer.cueVideo(itemdataList.youtubeID);
@@ -155,7 +149,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowHomeEnabled(false);
 
-        View CustomActionbar = LayoutInflater.from(this).inflate(R.layout.famousitemtitlebar, null);
+        View CustomActionbar = LayoutInflater.from(this).inflate(R.layout.popularitemtitlebar, null);
 
         actionBar.setCustomView(CustomActionbar);
     }
@@ -175,7 +169,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootref = firebaseDatabase.getReference();
-        final DatabaseReference dataref = rootref.child("A FAMOUS");
+        final DatabaseReference dataref = rootref.child("A POPULAR");
         dataref.orderByChild("title").equalTo(TITLE.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -202,7 +196,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
         UserManagement.getInstance().me(new MeV2ResponseCallback() {
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
-                Toast.makeText(FamousItemClickActivity.this, "로그인이 되어있지 않습니다.\n댓글 작성 기능이 제한됩니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(popularItemClickActivity.this, "로그인이 되어있지 않습니다.\n댓글 작성 기능이 제한됩니다.", Toast.LENGTH_SHORT).show();
                 subword.setEnabled(false);
                 writesubword.setClickable(false);
             }
@@ -236,7 +230,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
                     sub.push().setValue(subwordList);
                     subword.setText("");
 
-                    final DatabaseReference dataref = databaseReference.child("A FAMOUS");
+                    final DatabaseReference dataref = databaseReference.child("A POPULAR");
                     dataref.orderByChild("title").equalTo(TITLE.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -258,6 +252,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
                     });
                 }
             }).create().show();
+
         }
 
     }

@@ -1,13 +1,11 @@
 package kor.co.mu.jin.theword;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,11 +13,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -96,10 +91,8 @@ public class DeveloperActivity extends AppCompatActivity {
 
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference ref = firebaseDatabase.getReference();
-                DatabaseReference imgref = ref.child("FAMOUS");
-                DatabaseReference itemdataref = imgref.child("ITEMDATA");
+                DatabaseReference imgref = ref.child("A FUNNY");
 
-                CustomList customList = new CustomList(uri.toString(), editText.getText().toString());
                 String f = favoriteNum.getText().toString();
                 int fn = Integer.parseInt(f);
                 String s = subwordNum.getText().toString();

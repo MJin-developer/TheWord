@@ -11,6 +11,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,34 +24,40 @@ import java.util.ArrayList;
 
 public class FragmentPopular extends Fragment {
 
-    ArrayList<String> arrayList = new ArrayList<>();
-    ListView listView;
-    ArrayAdapter adapter;
+    ArrayList<CustomList> customLists = new ArrayList<>();
+    RecyclerAdapter2 adapter;
+    RecyclerView recyclerView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_popular, container, false);
-        listView = v.findViewById(R.id.list_popuular);
-        adapter = new ArrayAdapter(getActivity(), R.layout.listviewtest, arrayList);
-        listView.setAdapter(adapter);
+        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_p);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        adapter = new RecyclerAdapter2(customLists, getActivity());
+        recyclerView.setAdapter(adapter);
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference ref = firebaseDatabase.getReference("Title");
-        ref.addValueEventListener(new ValueEventListener() {
+        DatabaseReference rootref = firebaseDatabase.getReference();
+        DatabaseReference popularRef = rootref.child("A POPULAR");
+
+        popularRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                adapter.clear();
+                customLists.clear();
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    String s = snapshot.getValue().toString();
-                    arrayList.add(s);
+                    CustomList c = snapshot.getValue(CustomList.class);
+                    customLists.add(0, c);
+                    adapter.notifyDataSetChanged();
                 }
-                adapter.notifyDataSetChanged();
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
         });
 
         return v;

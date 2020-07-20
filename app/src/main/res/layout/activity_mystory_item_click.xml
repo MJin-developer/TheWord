@@ -33,13 +33,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
 
-            <fragment
-                android:layout_below="@id/view1"
-                android:id="@+id/youtubeFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.google.android.youtube.player.YouTubePlayerFragment"/>
-
             <TextView
                 android:id="@+id/item_content"
                 android:layout_width="wrap_content"
@@ -48,7 +41,7 @@
                 android:text="dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
                 android:fontFamily="@font/font"
                 android:layout_marginTop="16dp"
-                android:layout_below="@id/youtubeFragment"
+                android:layout_below="@id/view1"
                 android:textColor="#ff000000"/>
 
             <LinearLayout

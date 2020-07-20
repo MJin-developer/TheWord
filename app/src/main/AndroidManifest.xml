@@ -15,10 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FamousItemClickActivity">
-        </activity>
+        <activity android:name=".MYStroyWriteActivity"></activity>
+        <activity android:name=".FamousItemClickActivity"></activity>
         <activity android:name=".DeveloperActivity" />
+        <activity android:name=".popularItemClickActivity" />
         <activity android:name=".FragmentFamous" />
+        <activity android:name=".GoodItemClickActivity" />
+        <activity android:name=".FunnyItemClickActivity" />
+        <activity android:name=".MYStoryItemClickActivity" />
         <activity android:name=".FragmentPopular" />
         <activity android:name=".SetProfileActivity" />
         <activity android:name=".SettingActivity" />
