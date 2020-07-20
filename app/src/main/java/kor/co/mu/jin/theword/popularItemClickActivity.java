@@ -90,7 +90,7 @@ public class popularItemClickActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootref = firebaseDatabase.getReference();
-        DatabaseReference dataref = rootref.child("POPULAR");
+        DatabaseReference dataref = rootref.child("A POPULAR");
         dataref.orderByChild("title").equalTo(TITLE.getText().toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

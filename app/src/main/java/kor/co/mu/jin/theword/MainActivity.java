@@ -131,4 +131,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(5);
         boardliist.dismiss();
     }
+
+    public void clickHome(View view) {
+        viewPager.setCurrentItem(0);
+    }
 }

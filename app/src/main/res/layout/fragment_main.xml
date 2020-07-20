@@ -7,8 +7,16 @@
     tools:context=".FragmentFamous">
 
     <TextView
+        android:id="@+id/main_title_famous"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="main"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg"
+        android:text="추천 게시글"
+        android:layout_margin="4dp"
+        android:padding="6dp"
+        android:textColor="#ff000000"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:textSize="24sp"/>
 
 </RelativeLayout>
