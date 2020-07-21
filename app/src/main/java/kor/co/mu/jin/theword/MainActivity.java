@@ -51,16 +51,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(fragmentPager);
 
         CustomActionBar();
-
-        FirebaseInstanceId firebaseInstanceId = FirebaseInstanceId.getInstance();
-        Task<InstanceIdResult> task = firebaseInstanceId.getInstanceId();
-        task.addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-            @Override
-            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                String token = task.getResult().getToken();
-                Log.i("TOKEN", token);
-            }
-        });
     }
 
     void CustomActionBar() {

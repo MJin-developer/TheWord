@@ -1,13 +1,20 @@
 package kor.co.mu.jin.theword;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +25,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
@@ -166,4 +175,43 @@ public class SettingActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DeveloperActivity.class);
         startActivity(intent);
     }
+
+    /*
+    public class FMReceiveService extends FirebaseMessagingService{
+
+        @Override
+        public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+            super.onMessageReceived(remoteMessage);
+
+            if(btn_setting == 1){
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                NotificationCompat.Builder builder = null;
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                    NotificationChannel channel = new NotificationChannel("TheWordCH", "channel", NotificationManager.IMPORTANCE_HIGH);
+                    notificationManager.createNotificationChannel(channel);
+                    builder = new NotificationCompat.Builder(this, "TheWordCH");
+                }else{
+                    builder = new NotificationCompat.Builder(this, null);
+                }
+                builder.setSmallIcon(R.drawable.ic_chat_black_24dp);
+
+                String Ntitle = remoteMessage.getNotification().getTitle();
+                String Ncontent = remoteMessage.getNotification().getBody();
+
+                builder.setContentTitle(Ntitle);
+                builder.setContentText(Ncontent);
+
+                Intent intent = new Intent(this, Intro.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 150, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                builder.setContentIntent(pendingIntent);
+                builder.setAutoCancel(true);
+
+                Notification notification = builder.build();
+                notificationManager.notify(100, notification);
+            }
+
+        }
+    }*/
 }
