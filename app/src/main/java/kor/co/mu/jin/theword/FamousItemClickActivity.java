@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
     ArrayList<subwordList> subwordLists = new ArrayList<>();
     RecyclerView recyclerView;
     subwordAdapter adapter;
+    ProgressBar progressBar;
 
     YouTubePlayerFragment youTubePlayerFragment;
     TextView TITLE;
@@ -63,6 +65,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_famous_item_click);
         CustomActionBar();
+        progressBar = findViewById(R.id.progress_bar);
         TITLE = findViewById(R.id.item_title);
         CONTENT = findViewById(R.id.item_content);
         favoriteNum = findViewById(R.id.item_favoriteNum);
@@ -71,6 +74,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
         favorite = findViewById(R.id.iv1);
         subword = findViewById(R.id.et1);
         writesubword = findViewById(R.id.tv3);
+        progressBar.setVisibility(View.VISIBLE);
 
         requestUserInfo();
 
@@ -118,6 +122,7 @@ public class FamousItemClickActivity extends AppCompatActivity {
                         }
                     });
                 }
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

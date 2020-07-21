@@ -91,6 +91,78 @@ public class DeveloperActivity extends AppCompatActivity {
 
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference ref = firebaseDatabase.getReference();
+                DatabaseReference imgref = ref.child("A FAMOUS");
+
+                String f = favoriteNum.getText().toString();
+                int fn = Integer.parseInt(f);
+                String s = subwordNum.getText().toString();
+                int sn = Integer.parseInt(s);
+                ItemdataList itemdataList = new ItemdataList(uri.toString(), editText.getText().toString(), fn, sn, youtubeID.getText().toString(), content.getText().toString());
+
+                imgref.push().setValue(itemdataList);
+            }
+        });
+    }
+
+    public void confirm3(View view) {
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference rootRef = firebaseStorage.getReference();
+        final StorageReference imgRef = rootRef.child("uploads/" + FILENAME);
+        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<android.net.Uri>() {
+            @Override
+            public void onSuccess(android.net.Uri uri) {
+                Toast.makeText(DeveloperActivity.this, "URI 불러오기 성공", Toast.LENGTH_SHORT).show();
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference ref = firebaseDatabase.getReference();
+                DatabaseReference imgref = ref.child("A POPULAR");
+
+                String f = favoriteNum.getText().toString();
+                int fn = Integer.parseInt(f);
+                String s = subwordNum.getText().toString();
+                int sn = Integer.parseInt(s);
+                ItemdataList itemdataList = new ItemdataList(uri.toString(), editText.getText().toString(), fn, sn, youtubeID.getText().toString(), content.getText().toString());
+
+                imgref.push().setValue(itemdataList);
+            }
+        });
+    }
+
+    public void confirm4(View view) {
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference rootRef = firebaseStorage.getReference();
+        final StorageReference imgRef = rootRef.child("uploads/" + FILENAME);
+        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<android.net.Uri>() {
+            @Override
+            public void onSuccess(android.net.Uri uri) {
+                Toast.makeText(DeveloperActivity.this, "URI 불러오기 성공", Toast.LENGTH_SHORT).show();
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference ref = firebaseDatabase.getReference();
+                DatabaseReference imgref = ref.child("A GOOD");
+
+                String f = favoriteNum.getText().toString();
+                int fn = Integer.parseInt(f);
+                String s = subwordNum.getText().toString();
+                int sn = Integer.parseInt(s);
+                ItemdataList itemdataList = new ItemdataList(uri.toString(), editText.getText().toString(), fn, sn, youtubeID.getText().toString(), content.getText().toString());
+
+                imgref.push().setValue(itemdataList);
+            }
+        });
+    }
+
+    public void confirm5(View view) {
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference rootRef = firebaseStorage.getReference();
+        final StorageReference imgRef = rootRef.child("uploads/" + FILENAME);
+        imgRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<android.net.Uri>() {
+            @Override
+            public void onSuccess(android.net.Uri uri) {
+                Toast.makeText(DeveloperActivity.this, "URI 불러오기 성공", Toast.LENGTH_SHORT).show();
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference ref = firebaseDatabase.getReference();
                 DatabaseReference imgref = ref.child("A FUNNY");
 
                 String f = favoriteNum.getText().toString();
