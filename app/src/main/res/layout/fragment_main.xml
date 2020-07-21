@@ -6,17 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".FragmentFamous">
 
-    <TextView
-        android:id="@+id/main_title_famous"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg"
-        android:text="추천 게시글"
-        android:layout_margin="4dp"
-        android:padding="6dp"
-        android:textColor="#ff000000"
-        android:fontFamily="@font/font"
-        android:gravity="center"
-        android:textSize="24sp"/>
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/main_title_famous"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg"
+                android:text="추천 게시글"
+                android:layout_margin="4dp"
+                android:padding="6dp"
+                android:textColor="#ff000000"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:textSize="24sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                android:layout_below="@id/main_title_famous"/>
+
+            <TextView
+                android:layout_below="@id/recycler_main"
+                android:id="@+id/main_title_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg"
+                android:text="감동 스토리"
+                android:layout_margin="4dp"
+                android:padding="6dp"
+                android:textColor="#ff000000"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:textSize="24sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_main_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_title_popular"/>
+
+            <TextView
+                android:layout_below="@id/recycler_main_popular"
+                android:id="@+id/main_title_good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg"
+                android:text="좋은 글, 글귀"
+                android:layout_margin="4dp"
+                android:padding="6dp"
+                android:textColor="#ff000000"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:textSize="24sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_main_good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_title_good"/>
+
+            <TextView
+                android:layout_below="@id/recycler_main_good"
+                android:id="@+id/main_title_funny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg"
+                android:text="웃긴 명언"
+                android:layout_margin="4dp"
+                android:padding="6dp"
+                android:textColor="#ff000000"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:textSize="24sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_main_funny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_title_funny"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
