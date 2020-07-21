@@ -3,15 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#EBF0F1"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".FragmentFamous">
 
     <TextView
+        android:id="@+id/title_funny"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg"
         android:text="내 이야기 들려주기"
+        android:layout_margin="4dp"
+        android:padding="6dp"
+        android:textColor="#ff000000"
         android:fontFamily="@font/font"
         android:gravity="center"
         android:textSize="24sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/title_funny"
+        android:layout_marginTop="8dp"
+        android:id="@+id/recycler_m"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:src="@drawable/write">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </RelativeLayout>

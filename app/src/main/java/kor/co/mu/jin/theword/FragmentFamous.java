@@ -43,7 +43,7 @@ public class FragmentFamous extends Fragment {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();
-        DatabaseReference famousRef = rootRef.child("FAMOUS");
+        DatabaseReference famousRef = rootRef.child("A FAMOUS");
 
         famousRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,7 +53,7 @@ public class FragmentFamous extends Fragment {
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     CustomList c = snapshot.getValue(CustomList.class);
-                    customLists.add(c);
+                    customLists.add(0, c);
                     adapter.notifyDataSetChanged();
                 }
             }

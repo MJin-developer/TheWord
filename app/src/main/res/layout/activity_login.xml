@@ -12,7 +12,7 @@
         android:id="@+id/text_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="현명언"
+        android:text="Daily Letter"
         android:fontFamily="@font/font"
         android:layout_above="@id/img_cloud"
         android:textSize="50sp"

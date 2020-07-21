@@ -10,6 +10,9 @@ public class UserData {
         this.Nickname = nickname;
     }
 
+    public UserData() {
+    }
+
     public String getImgUrl() {
         return ImgUrl;
     }

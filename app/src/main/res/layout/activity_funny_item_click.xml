@@ -33,22 +33,23 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
 
-            <fragment
+            <ImageView
                 android:layout_below="@id/view1"
-                android:id="@+id/youtubeFragment"
+                android:id="@+id/iv_content"
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.google.android.youtube.player.YouTubePlayerFragment"/>
+                android:layout_height="300dp"
+                android:src="@drawable/plant"/>
 
             <TextView
                 android:id="@+id/item_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+                android:text="자빠지면 일어나면됨dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
                 android:fontFamily="@font/font"
                 android:layout_marginTop="16dp"
-                android:layout_below="@id/youtubeFragment"
+                android:layout_below="@id/iv_content"
                 android:textColor="#ff000000"/>
 
             <LinearLayout

@@ -47,7 +47,7 @@
             android:fontFamily="@font/font"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffffff"
-            android:text="현 명 언"
+            android:text="Daily Letter"
             android:layout_centerVertical="true"
             android:textSize="23sp"/>
 

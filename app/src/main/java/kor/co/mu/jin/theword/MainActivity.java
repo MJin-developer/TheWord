@@ -23,6 +23,8 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
     AppCompatEditText editText;
@@ -130,5 +132,9 @@ public class MainActivity extends AppCompatActivity {
     public void clickMystory(View view) {
         viewPager.setCurrentItem(5);
         boardliist.dismiss();
+    }
+
+    public void clickHome(View view) {
+        viewPager.setCurrentItem(0);
     }
 }
