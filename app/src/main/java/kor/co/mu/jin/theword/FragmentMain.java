@@ -56,7 +56,7 @@ public class FragmentMain extends Fragment {
                 if(position > customLists.size()) position = 0;
 
                 try {
-                    sleep(2500);
+                    sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
