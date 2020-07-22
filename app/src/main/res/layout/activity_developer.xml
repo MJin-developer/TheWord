@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:layout_below="@id/btn2"
+        android:layout_below="@id/l10"
         android:id="@+id/input_youtubeID"
         android:layout_width="match_parent"
         android:hint="유튜브 영상 ID"
@@ -64,13 +64,42 @@
         android:layout_centerHorizontal="true"
         android:onClick="confirm"/>
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/l10"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="확인2"
         android:layout_below="@id/btn1"
-        android:layout_centerHorizontal="true"
-        android:onClick="confirm2"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="유명"
+            android:onClick="confirm2"/>
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="감동"
+            android:onClick="confirm3"/>
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="좋은"
+            android:onClick="confirm4"/>
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="웃긴"
+            android:onClick="confirm5"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

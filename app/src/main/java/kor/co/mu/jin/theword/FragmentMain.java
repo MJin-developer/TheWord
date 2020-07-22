@@ -4,8 +4,11 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class FragmentMain extends Fragment {
+    ProgressBar progressBar;
+    int position = 0;
+    int stopKey = 1;
 
     ArrayList<CustomList> customLists = new ArrayList<>();
     ArrayList<CustomList> Plist = new ArrayList<>();
@@ -40,10 +46,39 @@ public class FragmentMain extends Fragment {
     RecyclerView recycler_main_funny;
     RecyclerAdapter4Main adapter_y;
 
+    Thread t = new Thread(){
+        @Override
+        public void run() {
+
+            while(stopKey == 1){
+                position ++;
+
+                if(position > customLists.size()) position = 0;
+
+                try {
+                    sleep(2500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        recycler_main.smoothScrollToPosition(position);
+                    }
+                };
+                getActivity().runOnUiThread(runnable);
+            }
+        }
+    };
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
+        progressBar = v.findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
+
         recycler_main = v.findViewById(R.id.recycler_main);
         adapter_f = new RecyclerAdapterMain(customLists, getActivity());
         recycler_main.setAdapter(adapter_f);
@@ -126,6 +161,7 @@ public class FragmentMain extends Fragment {
                     Flist.add(0, flist);
                     adapter_y.notifyDataSetChanged();
                 }
+                progressBar.setVisibility(View.GONE);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -133,7 +169,19 @@ public class FragmentMain extends Fragment {
             }
         });
 
+        try{
+            t.start();
+        }catch (Exception e){
+
+        }
+
+
         return v;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopKey = 0;
+    }
 }
