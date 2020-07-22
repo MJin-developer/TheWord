@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg"
-                android:text="웃긴 명언"
+                android:text="재미있는 명언"
                 android:layout_margin="4dp"
                 android:padding="6dp"
                 android:textColor="#ff000000"

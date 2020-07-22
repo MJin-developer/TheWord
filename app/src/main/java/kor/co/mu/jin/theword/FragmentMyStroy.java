@@ -49,7 +49,6 @@ public class FragmentMyStroy extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_story, container, false);
-        requestUserInfo();
         progressBar = v.findViewById(R.id.progress_bar);
         btn_write = v.findViewById(R.id.btn_write);
         my_title = v.findViewById(R.id.my_title);
@@ -59,13 +58,7 @@ public class FragmentMyStroy extends Fragment {
         btn_write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getActivity()).setMessage("글 작성 페이지로 이동하시겠습니까 ??").setNegativeButton("취소", null).setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getActivity(), MYStroyWriteActivity.class);
-                        startActivity(intent);
-                    }
-                }).create().show();
+                requestUserInfo();
             }
         });
         recycler = v.findViewById(R.id.recycler_m);
@@ -104,11 +97,17 @@ public class FragmentMyStroy extends Fragment {
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
                 Toast.makeText(getActivity(), "로그인이 되어있지 않습니다.\n글 작성 기능이 제한됩니다.", Toast.LENGTH_SHORT).show();
-                btn_write.setEnabled(false);
             }
 
             @Override
             public void onSuccess(MeV2Response result) {
+                new AlertDialog.Builder(getActivity()).setMessage("글 작성 페이지로 이동하시겠습니까 ??").setNegativeButton("취소", null).setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getActivity(), MYStroyWriteActivity.class);
+                        startActivity(intent);
+                    }
+                }).create().show();
                 btn_write.setEnabled(true);
             }
         });
