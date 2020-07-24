@@ -39,18 +39,18 @@ public class FragmentMyStroy extends Fragment {
     RecyclerView recycler;
     RecyclerAdapter5 adapter;
 
+    TextView an_text;
     TextView my_title;
     TextView my_num;
     TextView my_name;
     CircleImageView my_profileImg;
-    ProgressBar progressBar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_my_story, container, false);
         requestUserInfo();
-        progressBar = v.findViewById(R.id.progress_bar);
+        an_text = v.findViewById(R.id.an_text);
         btn_write = v.findViewById(R.id.btn_write);
         my_title = v.findViewById(R.id.my_title);
         my_num = v.findViewById(R.id.my_num);
@@ -71,7 +71,6 @@ public class FragmentMyStroy extends Fragment {
         recycler = v.findViewById(R.id.recycler_m);
         adapter = new RecyclerAdapter5(itemLists, getActivity());
         recycler.setAdapter(adapter);
-        progressBar.setVisibility(View.VISIBLE);
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootRef = firebaseDatabase.getReference();
@@ -87,7 +86,6 @@ public class FragmentMyStroy extends Fragment {
                     itemLists.add(0, itemList);
                     adapter.notifyDataSetChanged();
                 }
-                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -95,6 +93,12 @@ public class FragmentMyStroy extends Fragment {
 
             }
         });
+
+        if(itemLists.size() < 1){
+            an_text.setVisibility(View.VISIBLE);
+        }else{
+            an_text.setVisibility(View.GONE);
+        }
 
         return v;
     }

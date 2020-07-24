@@ -8,12 +8,13 @@
     android:padding="8dp"
     tools:context=".FragmentFamous">
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
+    <TextView
+        android:id="@+id/an_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:fontFamily="@font/font"
+        android:text="현재 등록된 게시글이 없습니다."/>
 
     <TextView
         android:id="@+id/title_funny"
