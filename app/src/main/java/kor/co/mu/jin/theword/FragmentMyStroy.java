@@ -79,6 +79,10 @@ public class FragmentMyStroy extends Fragment {
                     itemLists.add(0, itemList);
                     adapter.notifyDataSetChanged();
                 }
+
+                if(itemLists.size() < 1) an_text.setVisibility(View.VISIBLE);
+                else an_text.setVisibility(View.GONE);
+
             }
 
             @Override
@@ -87,8 +91,7 @@ public class FragmentMyStroy extends Fragment {
             }
         });
 
-        if(itemLists.size() < 1) an_text.setVisibility(View.VISIBLE);
-        else an_text.setVisibility(View.GONE);
+
 
         return v;
     }

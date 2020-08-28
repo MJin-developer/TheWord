@@ -175,7 +175,6 @@ public class FragmentMain extends Fragment {
 
         }
 
-
         return v;
     }
 

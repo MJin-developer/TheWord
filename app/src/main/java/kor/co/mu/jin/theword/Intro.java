@@ -11,7 +11,6 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,11 +21,13 @@ import android.widget.TextView;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import static com.kakao.util.helper.Utility.getPackageInfo;
+
 public class Intro extends AppCompatActivity {
 
     TextView text_intro_word;
     IntrowordList introwordList = new IntrowordList();
-
+// ㅋㄷㅋㄷ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -39,6 +40,7 @@ public class Intro extends AppCompatActivity {
         text_intro_word = findViewById(R.id.text_intro_word);
         text_intro_word.setText(introwordList.returnWord());
         text_intro_word.startAnimation(animationIn);
+
     }
 
     Handler handler = new Handler(){
